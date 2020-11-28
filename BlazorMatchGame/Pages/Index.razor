@@ -14,7 +14,7 @@
 
 <div class="container">
     <div class="row">
-        @for(var animalNumber = 0; animalNumber < shuffledAnimals.Count; animalNumber++)
+        @for (var animalNumber = 0; animalNumber < shuffledAnimals.Count; animalNumber++)
         {
             var animal = shuffledAnimals[animalNumber];
             var uniqueDescription = $"Button #{animalNumber}";
@@ -27,6 +27,10 @@
             </div>
         }
     </div>
+    <div class="row">
+        <h2>Matches Found: @matchesFound</h2>
+    </div>
+
 </div>
 @code {
     List<string> animalEmoji = new List<string>()
@@ -42,6 +46,7 @@
     };
 
     List<string> shuffledAnimals = new List<string>();
+    int matchesFound = 0;
 
     protected override void OnInitialized()
     {
@@ -54,6 +59,7 @@
         shuffledAnimals = animalEmoji
             .OrderBy(item => random.Next())
             .ToList();
+        matchesFound = 0;
     }
 
     string lastAnimalFound = string.Empty;
@@ -76,6 +82,13 @@
             shuffledAnimals = shuffledAnimals
                 .Select(a => a.Replace(animal, string.Empty))
                 .ToList();
+
+            matchesFound++;
+            // max amount of matches for 16 items is 8
+            if (matchesFound == 8)
+            {
+                SetupGame();
+            }
         }
         else
         {
