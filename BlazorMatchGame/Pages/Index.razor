@@ -15,15 +15,15 @@
 
 <div class="container">
     <div class="row">
-        @for (var animalNumber = 0; animalNumber < shuffledAnimals.Count; animalNumber++)
+        @for (var bodyPartNumber = 0; bodyPartNumber < shuffledBodyParts.Count; bodyPartNumber++)
         {
-            var animal = shuffledAnimals[animalNumber];
-            var uniqueDescription = $"Button #{animalNumber}";
+            var bodyPart = shuffledBodyParts[bodyPartNumber];
+            var uniqueDescription = $"Button #{bodyPartNumber}";
 
             <div class="col-3">
-                <button @onclick="@(() => ButtonClick(animal, uniqueDescription))"
+                <button @onclick="@(() => ButtonClick(bodyPart, uniqueDescription))"
                         type="button" class="btn btn-outline-dark">
-                    <h1>@shuffledAnimals[animalNumber]</h1>
+                    <h1>@shuffledBodyParts[bodyPartNumber]</h1>
                 </button>
             </div>
         }
@@ -37,19 +37,19 @@
 
 </div>
 @code {
-    List<string> animalEmoji = new List<string>()
+    List<string> bodyPartEmoji = new List<string>()
     {
-        "🐶", "🐶",
-        "🐺", "🐺",
-        "🐮", "🐮",
-        "🦊", "🦊",
-        "🐱", "🐱",
-        "🦁", "🦁",
-        "🐯", "🐯",
-        "🐹", "🐹",
+        "👀", "👀",
+        "👂", "👂",
+        "👄", "👄",
+        "🦵", "🦵",
+        "💪", "💪",
+        "👃", "👃",
+        "✍️", "✍️",
+        "👣", "👣",
     };
 
-    List<string> shuffledAnimals = new List<string>();
+    List<string> shuffledBodyParts = new List<string>();
     int matchesFound = 0;
     // create timer specific attributes
     Timer timer;
@@ -66,34 +66,34 @@
     private void SetupGame()
     {
         Random random = new Random();
-        shuffledAnimals = animalEmoji
+        shuffledBodyParts = bodyPartEmoji
             .OrderBy(item => random.Next())
             .ToList();
         matchesFound = 0;
         tenthsOfSecondsElapsed = 0;
     }
 
-    string lastAnimalFound = string.Empty;
+    string lastBodyPartFound = string.Empty;
     string lastDescription = string.Empty;
 
-    private void ButtonClick(string animal, string animalDescription)
+    private void ButtonClick(string bodyPart, string bodyPartDescription)
     {
-        if (lastAnimalFound == string.Empty)
+        if (lastBodyPartFound == string.Empty)
         {
             // first selection if the pair, remember it.
-            lastAnimalFound = animal;
-            lastDescription = animalDescription;
+            lastBodyPartFound = bodyPart;
+            lastDescription = bodyPartDescription;
             // start on first click
             timer.Start();
         }
-        else if ((lastAnimalFound == animal) && (lastDescription != animalDescription))
+        else if ((lastBodyPartFound == bodyPart) && (lastDescription != bodyPartDescription))
         {
             // Match found! Reset for next pair.
-            lastAnimalFound = string.Empty;
+            lastBodyPartFound = string.Empty;
 
-            // Replace found animals with empty string to hide them.
-            shuffledAnimals = shuffledAnimals
-                .Select(a => a.Replace(animal, string.Empty))
+            // Replace found body parts with empty string to hide them.
+            shuffledBodyParts = shuffledBodyParts
+                .Select(a => a.Replace(bodyPart, string.Empty))
                 .ToList();
 
             matchesFound++;
@@ -110,7 +110,7 @@
         {
             // user selection doesn't match
             // reset selection
-            lastAnimalFound = string.Empty;
+            lastBodyPartFound = string.Empty;
         }
     }
 
