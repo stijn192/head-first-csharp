@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMatchGame", "BlazorMatchGame\BlazorMatchGame.csproj", "{B8C52E06-5F9F-4DF7-9B39-A987C2E389DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8C52E06-5F9F-4DF7-9B39-A987C2E389DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C52E06-5F9F-4DF7-9B39-A987C2E389DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C52E06-5F9F-4DF7-9B39-A987C2E389DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C52E06-5F9F-4DF7-9B39-A987C2E389DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
